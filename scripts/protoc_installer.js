@@ -1,0 +1,1 @@
+console.log('Protoc compiler installer script.');

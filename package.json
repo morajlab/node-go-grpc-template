@@ -1,0 +1,29 @@
+{
+  "name": "node-go-grpc-template",
+  "version": "0.0.0",
+  "description": "Node.js-Go gRPC template",
+  "scripts": {
+    "postinstall": "npx husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morajlab/node-go-grpc-template.git"
+  },
+  "author": "Morteza Jamali <mortezajamali4241@gmail.com> (https://moraj.ir)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morajlab/node-go-grpc-template/issues"
+  },
+  "homepage": "https://github.com/morajlab/node-go-grpc-template#readme",
+  "lint-staged": {
+    "**/*": "prettier -w -u",
+    "**/*.go": "go fmt"
+  }
+}
