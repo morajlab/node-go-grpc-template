@@ -11,6 +11,7 @@ VERIFICATION_FILE=$TEMPLATE_PATH/$BRANCH/verify.sh
 . "$HUSKY_ROOT_PATH/_/husky.sh"
 . "$HUSKY_ROOT_PATH/f/node.sh"
 
+npm run go:fmt
 $node_path/.bin/lint-staged --allow-empty
 
 if [ -f "$VERIFICATION_FILE" ]; then

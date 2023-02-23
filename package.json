@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "description": "Node.js-Go gRPC template",
   "scripts": {
-    "postinstall": "npx husky install"
+    "go:fmt": "go fmt packages/helloworld/grpc_server/*.go",
+    "go:install": "go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2 && go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28 && go mod tidy",
+    "proto:compile": "protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative packages/helloworld/protos/helloworld.proto",
+    "postinstall": "npx husky install && npm run go:install && npm run proto:compile",
+    "helloworld:server": "go run packages/helloworld/grpc_server/server.go",
+    "helloworld:client": "node packages/helloworld/grpc_client/client.js"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -23,7 +28,12 @@
   },
   "homepage": "https://github.com/morajlab/node-go-grpc-template#readme",
   "lint-staged": {
-    "**/*": "prettier -w -u",
-    "**/*.go": "go fmt"
+    "**/*": "prettier -w -u"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.10",
+    "@grpc/proto-loader": "^0.7.5",
+    "google-protobuf": "^3.21.2",
+    "minimist": "^1.2.8"
   }
 }
